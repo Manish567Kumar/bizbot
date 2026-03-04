@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@bizbot/shared": ["../../packages/shared/src"],
+      "@/*": ["./src/*"]
+    }
+  }
+}
