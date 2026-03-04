@@ -182,7 +182,7 @@ export interface MetaMessage {
   text?: { body: string };
   image?: { id: string; caption?: string; mime_type: string };
   audio?: { id: string; mime_type: string };
-  video?: { id: string; mime_type: string };
+  video?: { id: string; mime_type: string; caption?: string };
   document?: { id: string; filename: string; mime_type: string };
   interactive?: {
     type: string;

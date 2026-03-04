@@ -69,7 +69,11 @@ function verifySignature(req: Request): boolean {
     .update(JSON.stringify(req.body))
     .digest('hex')}`;
 
-  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+  const sigBuf = Buffer.from(signature);
+  const expBuf = Buffer.from(expected);
+  // timingSafeEqual requires equal-length buffers — mismatched length = invalid
+  if (sigBuf.length !== expBuf.length) return false;
+  return crypto.timingSafeEqual(sigBuf, expBuf);
 }
 
 async function updateMessageStatus(waMessageId: string, status: string): Promise<void> {

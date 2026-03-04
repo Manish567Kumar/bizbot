@@ -1,4 +1,5 @@
 import { prisma } from '../../config/database';
+import { Prisma } from '@prisma/client';
 import { AppError } from '../../middleware/errorHandler';
 import { HTTP_STATUS, type BusinessProfileInput } from '@bizbot/shared';
 import { seedIndustryTemplates } from '../bot/flow.engine';
@@ -26,7 +27,7 @@ export async function updateBusinessProfile(businessId: string, input: BusinessP
     data: {
       name: input.name,
       industry: input.industry,
-      settings: input.settings ?? undefined,
+      settings: input.settings as Prisma.InputJsonValue ?? undefined,
     },
   });
 

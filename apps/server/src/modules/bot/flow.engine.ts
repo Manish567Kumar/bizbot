@@ -29,19 +29,19 @@ export async function processFlow(params: ProcessFlowParams): Promise<void> {
   let matchedResponse: BotResponse | null = null;
 
   for (const flow of flows) {
-    const trigger = flow.trigger as BotTrigger;
+    const trigger = flow.trigger as unknown as BotTrigger;
 
     if (matchesTrigger(trigger, content, currentHour)) {
-      matchedResponse = flow.response as BotResponse;
+      matchedResponse = flow.response as unknown as BotResponse;
       break; // highest priority match wins
     }
   }
 
   // Fallback to default flow if no match
   if (!matchedResponse) {
-    const defaultFlow = flows.find((f) => (f.trigger as BotTrigger).type === 'default');
+    const defaultFlow = flows.find((f) => (f.trigger as unknown as BotTrigger).type === 'default');
     if (defaultFlow) {
-      matchedResponse = defaultFlow.response as BotResponse;
+      matchedResponse = defaultFlow.response as unknown as BotResponse;
     }
   }
 
