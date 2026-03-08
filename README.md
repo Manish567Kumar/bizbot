@@ -1,4 +1,4 @@
-# BizBot — WhatsApp Automation SaaS for Indian SMBs
+# BizBot — WhatsApp Automation SaaS for SMBs
 
 Auto-reply to WhatsApp messages 24/7. Built for restaurants, salons, clinics, tuition centers, and retail shops across India.
 
